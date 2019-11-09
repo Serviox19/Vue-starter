@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>App</h1>
-    <SearchBar />
+    <SearchBar v-on:searchChange="getSearchTerm" />
   </div>
 </template>
 
@@ -10,8 +10,18 @@ import SearchBar from './components/SearchBar';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      query: ''
+    }
+  },
   components: {
     SearchBar
+  },
+  methods: {
+    getSearchTerm(query) {
+      console.log('Query: ' + query);
+    }
   }
 }
 </script>
