@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <h1>App</h1>
-    <SearchBar v-on:searchChange="getSearchTerm" />
+    <SearchBar @searchChange="getSearchTerm" />
+    <NewsList />
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar';
+import NewsList from './components/NewsList'
 
 export default {
   name: 'App',
@@ -16,7 +18,8 @@ export default {
     }
   },
   components: {
-    SearchBar
+    SearchBar,
+    NewsList
   },
   methods: {
     getSearchTerm(query) {
