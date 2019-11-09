@@ -3,8 +3,9 @@
     <ul>
       <NewsItem
         v-for="article in news"
-        v-bind:article="article"
-        v-bind:key="article.title"
+        :article="article"
+        :key="article.title"
+        @toggleAlert="toggleAlert"
       />
     </ul>
   </div>
@@ -30,9 +31,10 @@
     },
     methods: {
       getNews() {
-
         axios.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=b1eff68325b04271adb0e4956da610b4').then(response => this.news = response.data.articles)
-
+      },
+      toggleAlert(article) {
+        alert(article.title);
       }
     }
   }

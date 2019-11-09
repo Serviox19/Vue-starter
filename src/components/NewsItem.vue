@@ -1,6 +1,6 @@
 <template>
   <li class="news_item">
-    <a class="link" :href="article.url">
+    <a class="link" :href="article.url" target="_blank" @click="onArticleClick">
       <h2 class="title">{{ article.title }}</h2>
       <p class="description">{{ article.description }}</p>
     </a>
@@ -15,11 +15,17 @@
   export default {
     name: 'NewsItem',
     props: ['article'],
-    mounted() {}
+    mounted() {},
+    methods: {
+      onArticleClick() {
+        this.$emit('toggleAlert', this.article)
+      }
+    },
+    computed: {}
   }
 </script>
 
-<style>
+<style scoped>
 
 .news_item {
   display: flex;
