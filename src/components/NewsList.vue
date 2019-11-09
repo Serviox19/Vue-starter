@@ -3,8 +3,8 @@
     <ul>
       <NewsItem
         v-for="article in news"
-        :article="article"
-        :key="article.title"
+        v-bind:article="article"
+        v-bind:key="article.title"
       />
     </ul>
   </div>
