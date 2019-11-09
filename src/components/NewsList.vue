@@ -1,9 +1,11 @@
 <template>
   <div id="news">
     <ul>
-      <li v-for="article in news" v-bind:key="article.title">
-        {{ article.title }}
-      </li>
+      <NewsItem
+        v-for="article in news"
+        :article="article"
+        :key="article.title"
+      />
     </ul>
   </div>
 </template>
@@ -11,6 +13,7 @@
 
 <script>
   import axios from 'axios';
+  import NewsItem from './NewsItem'
 
   export default {
     name: 'NewsList',
@@ -22,7 +25,9 @@
         news: []
       }
     },
-    components: {},
+    components: {
+      NewsItem
+    },
     methods: {
       getNews() {
 

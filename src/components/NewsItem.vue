@@ -1,13 +1,13 @@
 <template>
   <li class="news_item">
-    <span>{{ article.title }}</span>
+    {{ article.title }}
   </li>
 </template>
 
 <script>
   export default {
     name: 'NewsItem',
-    props: {}
+    props: ['article']
   }
 </script>
 
