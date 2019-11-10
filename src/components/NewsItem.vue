@@ -1,5 +1,6 @@
 <template>
   <li class="news_item">
+    <img class="poster" :src="getImgSrc" />
     <a class="link" :href="article.url" target="_blank" @click="onArticleClick">
       <h2 class="title">{{ article.title }}</h2>
       <p v-if="article.description" class="description">{{ article.description }}</p>
@@ -14,14 +15,23 @@
 <script>
   export default {
     name: 'NewsItem',
+    computed: {
+      getImgSrc() {
+        if (this.article.urlToImage) {
+          console.log('yes');
+          return this.article.urlToImage
+        } else {
+          return "https://via.placeholder.com/400X400"
+        }
+      }
+    },
     props: ['article'], //no need to use this.props, just use this.article
     mounted() {},
     methods: {
       onArticleClick() {
         this.$emit('toggleAlert', this.article)
       }
-    },
-    computed: {}
+    }
   }
 </script>
 
@@ -62,6 +72,13 @@
   margin-top: 1.5em;
   color: #191919;
   font-weight: 500
+}
+
+.poster {
+  width: 100%;
+  height: 15em;
+  object-fit: fill;
+  margin-bottom: 1em
 }
 
 </style>
