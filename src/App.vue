@@ -2,7 +2,7 @@
   <div id="app">
     <h1>App</h1>
     <SearchBar @searchChange="getSearchTerm" />
-    <NewsList />
+    <NewsList @appAlert="appAlert"/>
   </div>
 </template>
 
@@ -24,6 +24,9 @@ export default {
   methods: {
     getSearchTerm(query) {
       console.log('Query: ' + query);
+    },
+    appAlert(article) {
+      console.log(article.title)
     }
   }
 }

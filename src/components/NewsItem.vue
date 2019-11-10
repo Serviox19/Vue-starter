@@ -2,7 +2,7 @@
   <li class="news_item">
     <a class="link" :href="article.url" target="_blank" @click="onArticleClick">
       <h2 class="title">{{ article.title }}</h2>
-      <p class="description">{{ article.description }}</p>
+      <p v-if="article.description" class="description">{{ article.description }}</p>
     </a>
     <div class="bottom">
       <span class="author" style="text-align:left">{{ article.author }}</span>
@@ -14,7 +14,7 @@
 <script>
   export default {
     name: 'NewsItem',
-    props: ['article'],
+    props: ['article'], //no need to use this.props, just use this.article
     mounted() {},
     methods: {
       onArticleClick() {
